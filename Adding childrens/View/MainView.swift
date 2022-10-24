@@ -11,11 +11,11 @@ import UIKit
 class MainView: UIViewController {
 	
 	//MARK: - PROPERTY
-	
 	private let tableView = UITableView()
-	let headerView = CustomHeader()
+	private var headerView = CustomHeader()
+	private var footerView = CustomFooter()
 	var headerViewTopConstraint: NSLayoutConstraint?
-	var countChild = 0
+	
 	//MARK: - LIVECYCLE
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,7 +29,12 @@ class MainView: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(false)
 		CoreDataMethods.shared.fetchRequest()
-		self.countChild = CoreDataMethods.shared.coreDataModel.count
+		if CoreDataMethods.shared.coreDataModel.count > 4 {
+			self.headerViewTopConstraint?.constant = -186
+			self.headerView.addChildButton.isHidden = true
+			self.headerView.bottomLabel.isHidden = true
+			self.headerView.textFieldAge.isHidden = false
+		}
 	}
 	
 	//MARK: - SETUP
@@ -38,19 +43,35 @@ class MainView: UIViewController {
 		tableView.dataSource = self
 		tableView.backgroundColor = .white
 		tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
-		tableView.register(TableFooter.self, forHeaderFooterViewReuseIdentifier: TableFooter.identifier)
+		tableView.register(CustomFooter.self, forHeaderFooterViewReuseIdentifier: CustomFooter.identifier)
 		tableView.rowHeight = 148
 		tableView.allowsSelection = false
 	}
 	
 	func setupNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(tableViewReloadData), name: Notification.Name("TableViewReloadData"), object: .none)
+		NotificationCenter.default.addObserver(self, selector: #selector(clearAll), name: Notification.Name("clearAction"), object: .none)
 	}
 	
+	
+	//MARK: - ACTION
 	@objc func tableViewReloadData() {
 		CoreDataMethods.shared.fetchRequest()
 		self.tableView.reloadData()
+		self.footerView.buttonClear.isHidden = false
 		showHideHeader()
+	}
+	
+	@objc func clearAll() {
+		let areYouSureAllert = UIAlertController(title: "Сбросить данные?", message: nil, preferredStyle: .actionSheet)
+		let noAction = UIAlertAction(title: "Отмена", style: .cancel)
+		let yesAction = UIAlertAction(title: "Cбросить", style: .destructive) { [weak self] _ in
+			CoreDataMethods.shared.deleteAll()
+			self?.footerView.buttonClear.isHidden = true
+		}
+		areYouSureAllert.addAction(noAction)
+		areYouSureAllert.addAction(yesAction)
+		self.present(areYouSureAllert, animated: true)
 	}
 	
 	func showHideHeader() {
@@ -105,8 +126,8 @@ extension MainView: UITableViewDelegate, UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
 		let items = CoreDataMethods.shared.coreDataModel[indexPath.row]
 		cell.button.tag = indexPath.row
-		cell.textFieldName.text = items.name
-		cell.textFieldAge.text = String(items.age)
+		cell.insideLblName.text = items.name
+		cell.insideLblAge.text = String(items.age)
 		return cell
 	}
 	
@@ -115,7 +136,7 @@ extension MainView: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		let foooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableFooter.identifier) as? TableFooter
+		let foooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomFooter.identifier) as? CustomFooter
 		return foooter
 	}
 	

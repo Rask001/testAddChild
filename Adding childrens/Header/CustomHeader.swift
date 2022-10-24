@@ -22,11 +22,13 @@ final class CustomHeader: UIView {
 	var textFieldName = UITextField()
 	var textFieldAge = UITextField()
 	private var topLabel = UILabel()
-	var bottomLabel = UILabel()
 	private let numberToolbar = UIToolbar()
+	var bottomLabel = UILabel()
 	var childModel = ChildModel()
 	weak var mainView: MainView?
 	var delegate: MainView?
+	
+	
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		addSubview()
@@ -46,7 +48,8 @@ final class CustomHeader: UIView {
 	private func setupTextFieldName() {
 		self.textFieldName.delegate = self
 		self.textFieldName.backgroundColor = .white
-		self.textFieldName.placeholder = " Имя"
+		self.textFieldName.placeholder = "Имя"
+		self.textFieldName.indent(size: 10)
 		self.textFieldName.layer.borderWidth = 1
 		self.textFieldName.layer.borderColor = Constant.tFBorderColor
 		self.textFieldName.layer.cornerRadius = 8
@@ -62,11 +65,20 @@ final class CustomHeader: UIView {
 		numberToolbar.sizeToFit()
 	}
 	
+	private func setupTopLabel() {
+		self.topLabel.text = "Персональные данные"
+	}
+	
+	private func setupBottomLabel() {
+		self.bottomLabel.text = "Дети (макс. 5)"
+	}
+	
 	private func setupTextFieldAge() {
 		self.textFieldAge.inputAccessoryView = numberToolbar
 		self.textFieldAge.delegate = self
 		self.textFieldAge.backgroundColor = .white
-		self.textFieldAge.placeholder = " Возраст"
+		self.textFieldAge.placeholder = "Возраст"
+		self.textFieldAge.indent(size: 10)
 		self.textFieldAge.layer.borderWidth = 1
 		self.textFieldAge.keyboardType = .numberPad
 		self.textFieldAge.layer.borderColor = Constant.tFBorderColor
@@ -87,14 +99,6 @@ final class CustomHeader: UIView {
 		self.textFieldName.text = ""
 		self.textFieldAge.text = ""
 		self.endEditing(true)
-	}
-	
-	private func setupTopLabel() {
-		self.topLabel.text = "Персональные данные"
-	}
-	
-	private func setupBottomLabel() {
-		self.bottomLabel.text = "Дети (макс. 5)"
 	}
 	
 	private func setupAddChildButton() {
@@ -153,8 +157,17 @@ final class CustomHeader: UIView {
 	}
 }
 
+//MARK: - extension
 extension CustomHeader: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 			return textFieldAge.becomeFirstResponder()
 	}
+}
+
+//MARK: - extension UITextField
+extension UITextField {
+		func indent(size:CGFloat) {
+				self.leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
+				self.leftViewMode = .always
+		}
 }

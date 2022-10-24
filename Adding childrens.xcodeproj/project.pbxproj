@@ -13,9 +13,6 @@
 		3A900C412906948100B88276 /* Adding_childrens.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C3F2906948100B88276 /* Adding_childrens.xcdatamodeld */; };
 		3A900C432906948800B88276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A900C422906948800B88276 /* Assets.xcassets */; };
 		3A900C462906948800B88276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A900C442906948800B88276 /* LaunchScreen.storyboard */; };
-		3A900C512906948800B88276 /* Adding_childrensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C502906948800B88276 /* Adding_childrensTests.swift */; };
-		3A900C5B2906948800B88276 /* Adding_childrensUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C5A2906948800B88276 /* Adding_childrensUITests.swift */; };
-		3A900C5D2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C5C2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift */; };
 		3A900C6A2906A0B700B88276 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C692906A0B700B88276 /* CustomCell.swift */; };
 		3A900C6C2906A0ED00B88276 /* CustomCell+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */; };
 		3A900C6E2906ADB200B88276 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C6D2906ADB200B88276 /* CustomHeader.swift */; };
@@ -23,6 +20,7 @@
 		3AFE7F3C2906E84D00B292A7 /* Child+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3A2906E84D00B292A7 /* Child+CoreDataClass.swift */; };
 		3AFE7F3D2906E84D00B292A7 /* Child+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */; };
 		3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */; };
+		3AFE7F4229071CDB00B292A7 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F4129071CDB00B292A7 /* CustomFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +50,7 @@
 		3A900C452906948800B88276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A900C472906948800B88276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A900C4C2906948800B88276 /* Adding childrensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adding childrensTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A900C502906948800B88276 /* Adding_childrensTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adding_childrensTests.swift; sourceTree = "<group>"; };
 		3A900C562906948800B88276 /* Adding childrensUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adding childrensUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A900C5A2906948800B88276 /* Adding_childrensUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adding_childrensUITests.swift; sourceTree = "<group>"; };
-		3A900C5C2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adding_childrensUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A900C692906A0B700B88276 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomCell+ext.swift"; sourceTree = "<group>"; };
 		3A900C6D2906ADB200B88276 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
@@ -63,6 +58,7 @@
 		3AFE7F3A2906E84D00B292A7 /* Child+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMethods.swift; sourceTree = "<group>"; };
+		3AFE7F4129071CDB00B292A7 /* CustomFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				3A900C352906948100B88276 /* Adding childrens */,
-				3A900C4F2906948800B88276 /* Adding childrensTests */,
-				3A900C592906948800B88276 /* Adding childrensUITests */,
 				3A900C342906948100B88276 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,29 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				3A9CA26C2906E1F90073D919 /* Application */,
+				3AFE7F4329071D8000B292A7 /* Model */,
 				3A9CA26B2906E1D50073D919 /* View */,
 				3A9CA26A2906E1CB0073D919 /* Header */,
 				3A9CA2692906E18C0073D919 /* Cell */,
 				3AFE7F3E2906EA6900B292A7 /* CoreData */,
 			);
 			path = "Adding childrens";
-			sourceTree = "<group>";
-		};
-		3A900C4F2906948800B88276 /* Adding childrensTests */ = {
-			isa = PBXGroup;
-			children = (
-				3A900C502906948800B88276 /* Adding_childrensTests.swift */,
-			);
-			path = "Adding childrensTests";
-			sourceTree = "<group>";
-		};
-		3A900C592906948800B88276 /* Adding childrensUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3A900C5A2906948800B88276 /* Adding_childrensUITests.swift */,
-				3A900C5C2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift */,
-			);
-			path = "Adding childrensUITests";
 			sourceTree = "<group>";
 		};
 		3A9CA2692906E18C0073D919 /* Cell */ = {
@@ -152,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				3A900C6D2906ADB200B88276 /* CustomHeader.swift */,
+				3AFE7F4129071CDB00B292A7 /* CustomFooter.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -159,7 +138,6 @@
 		3A9CA26B2906E1D50073D919 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3A9CA26D2906E28F0073D919 /* Model.swift */,
 				3A900C3A2906948100B88276 /* MainView.swift */,
 			);
 			path = View;
@@ -186,6 +164,14 @@
 				3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3AFE7F4329071D8000B292A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A9CA26D2906E28F0073D919 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +311,7 @@
 				3AFE7F3D2906E84D00B292A7 /* Child+CoreDataProperties.swift in Sources */,
 				3A900C6A2906A0B700B88276 /* CustomCell.swift in Sources */,
 				3A900C392906948100B88276 /* SceneDelegate.swift in Sources */,
+				3AFE7F4229071CDB00B292A7 /* CustomFooter.swift in Sources */,
 				3A900C6C2906A0ED00B88276 /* CustomCell+ext.swift in Sources */,
 				3A900C412906948100B88276 /* Adding_childrens.xcdatamodeld in Sources */,
 				3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */,
@@ -336,7 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A900C512906948800B88276 /* Adding_childrensTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +330,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A900C5D2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift in Sources */,
-				3A900C5B2906948800B88276 /* Adding_childrensUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

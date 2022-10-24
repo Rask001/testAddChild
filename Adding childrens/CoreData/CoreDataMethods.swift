@@ -51,4 +51,18 @@ final class CoreDataMethods {
 			print("error : \(error)")
 		}
 	}
+	
+	func deleteAll() {
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		for i in coreDataModel {
+			context.delete(i)
+		}
+		let _ : NSError! = nil
+		do {
+			try context.save()
+			NotificationCenter.default.post(name: Notification.Name("TableViewReloadData"), object: .none)
+		} catch {
+			print("error : \(error)")
+		}
+	}
 }
