@@ -18,12 +18,13 @@ protocol CustomHeaderProtocol {
 }
 
 final class CustomHeader: UIView {
-	private var addChildButton = UIButton()
+	var addChildButton = UIButton()
 	var textFieldName = UITextField()
 	var textFieldAge = UITextField()
 	private var topLabel = UILabel()
-	private var bottomLabel = UILabel()
+	var bottomLabel = UILabel()
 	private let numberToolbar = UIToolbar()
+	var childModel = ChildModel()
 	weak var mainView: MainView?
 	var delegate: MainView?
 	override init(frame: CGRect) {
@@ -74,10 +75,17 @@ final class CustomHeader: UIView {
 	}
 	
 	@objc func dismissKeyb() {
-		
+		endEditing(true)
 	}
 	
 	@objc func okAction() {
+		guard let age = textFieldAge.text else { return }
+		self.childModel.name = textFieldName.text ?? ""
+		self.childModel.age = Int(age) ?? 0
+		CoreDataMethods.shared.saveChild(name: childModel.name, age: childModel.age)
+		
+		self.textFieldName.text = ""
+		self.textFieldAge.text = ""
 		self.endEditing(true)
 	}
 	
@@ -90,7 +98,7 @@ final class CustomHeader: UIView {
 	}
 	
 	private func setupAddChildButton() {
-		self.addChildButton.setTitle("Добавить ребенка", for: .normal)
+		self.addChildButton.setTitle("+ Добавить ребенка", for: .normal)
 		self.addChildButton.setTitleColor(.blue, for: .normal)
 		self.addChildButton.layer.borderColor = UIColor(ciColor: .blue).cgColor
 		self.addChildButton.layer.borderWidth = 1

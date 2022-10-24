@@ -19,6 +19,10 @@
 		3A900C6A2906A0B700B88276 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C692906A0B700B88276 /* CustomCell.swift */; };
 		3A900C6C2906A0ED00B88276 /* CustomCell+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */; };
 		3A900C6E2906ADB200B88276 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A900C6D2906ADB200B88276 /* CustomHeader.swift */; };
+		3A9CA26E2906E28F0073D919 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9CA26D2906E28F0073D919 /* Model.swift */; };
+		3AFE7F3C2906E84D00B292A7 /* Child+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3A2906E84D00B292A7 /* Child+CoreDataClass.swift */; };
+		3AFE7F3D2906E84D00B292A7 /* Child+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */; };
+		3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		3A900C692906A0B700B88276 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomCell+ext.swift"; sourceTree = "<group>"; };
 		3A900C6D2906ADB200B88276 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
+		3A9CA26D2906E28F0073D919 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		3AFE7F3A2906E84D00B292A7 /* Child+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,16 +113,11 @@
 		3A900C352906948100B88276 /* Adding childrens */ = {
 			isa = PBXGroup;
 			children = (
-				3A900C362906948100B88276 /* AppDelegate.swift */,
-				3A900C382906948100B88276 /* SceneDelegate.swift */,
-				3A900C3A2906948100B88276 /* MainView.swift */,
-				3A900C6D2906ADB200B88276 /* CustomHeader.swift */,
-				3A900C692906A0B700B88276 /* CustomCell.swift */,
-				3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */,
-				3A900C422906948800B88276 /* Assets.xcassets */,
-				3A900C442906948800B88276 /* LaunchScreen.storyboard */,
-				3A900C472906948800B88276 /* Info.plist */,
-				3A900C3F2906948100B88276 /* Adding_childrens.xcdatamodeld */,
+				3A9CA26C2906E1F90073D919 /* Application */,
+				3A9CA26B2906E1D50073D919 /* View */,
+				3A9CA26A2906E1CB0073D919 /* Header */,
+				3A9CA2692906E18C0073D919 /* Cell */,
+				3AFE7F3E2906EA6900B292A7 /* CoreData */,
 			);
 			path = "Adding childrens";
 			sourceTree = "<group>";
@@ -134,6 +137,55 @@
 				3A900C5C2906948800B88276 /* Adding_childrensUITestsLaunchTests.swift */,
 			);
 			path = "Adding childrensUITests";
+			sourceTree = "<group>";
+		};
+		3A9CA2692906E18C0073D919 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3A900C692906A0B700B88276 /* CustomCell.swift */,
+				3A900C6B2906A0ED00B88276 /* CustomCell+ext.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3A9CA26A2906E1CB0073D919 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				3A900C6D2906ADB200B88276 /* CustomHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		3A9CA26B2906E1D50073D919 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A9CA26D2906E28F0073D919 /* Model.swift */,
+				3A900C3A2906948100B88276 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3A9CA26C2906E1F90073D919 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3A900C362906948100B88276 /* AppDelegate.swift */,
+				3A900C382906948100B88276 /* SceneDelegate.swift */,
+				3A900C422906948800B88276 /* Assets.xcassets */,
+				3A900C442906948800B88276 /* LaunchScreen.storyboard */,
+				3A900C472906948800B88276 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3AFE7F3E2906EA6900B292A7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3A900C3F2906948100B88276 /* Adding_childrens.xcdatamodeld */,
+				3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */,
+				3AFE7F3A2906E84D00B292A7 /* Child+CoreDataClass.swift */,
+				3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,10 +321,14 @@
 				3A900C3B2906948100B88276 /* MainView.swift in Sources */,
 				3A900C6E2906ADB200B88276 /* CustomHeader.swift in Sources */,
 				3A900C372906948100B88276 /* AppDelegate.swift in Sources */,
+				3AFE7F3C2906E84D00B292A7 /* Child+CoreDataClass.swift in Sources */,
+				3AFE7F3D2906E84D00B292A7 /* Child+CoreDataProperties.swift in Sources */,
 				3A900C6A2906A0B700B88276 /* CustomCell.swift in Sources */,
 				3A900C392906948100B88276 /* SceneDelegate.swift in Sources */,
 				3A900C6C2906A0ED00B88276 /* CustomCell+ext.swift in Sources */,
 				3A900C412906948100B88276 /* Adding_childrens.xcdatamodeld in Sources */,
+				3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */,
+				3A9CA26E2906E28F0073D919 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +499,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H6Q7NMAZAW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Adding childrens/Info.plist";
+				INFOPLIST_FILE = "Adding childrens/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -470,7 +526,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H6Q7NMAZAW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Adding childrens/Info.plist";
+				INFOPLIST_FILE = "Adding childrens/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
