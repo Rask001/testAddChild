@@ -58,16 +58,14 @@ class MainView: UIViewController {
 	@objc func tableViewReloadData() {
 		CoreDataMethods.shared.fetchRequest()
 		self.tableView.reloadData()
-		self.footerView.buttonClear.isHidden = false
 		showHideHeader()
 	}
 	
 	@objc func clearAll() {
 		let areYouSureAllert = UIAlertController(title: "Сбросить данные?", message: nil, preferredStyle: .actionSheet)
 		let noAction = UIAlertAction(title: "Отмена", style: .cancel)
-		let yesAction = UIAlertAction(title: "Cбросить", style: .destructive) { [weak self] _ in
+		let yesAction = UIAlertAction(title: "Cбросить", style: .destructive) { _ in
 			CoreDataMethods.shared.deleteAll()
-			self?.footerView.buttonClear.isHidden = true
 		}
 		areYouSureAllert.addAction(noAction)
 		areYouSureAllert.addAction(yesAction)

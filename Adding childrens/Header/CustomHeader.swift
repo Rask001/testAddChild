@@ -91,6 +91,7 @@ final class CustomHeader: UIView {
 	}
 	
 	@objc func okAction() {
+		guard textFieldAge.text != "" else { Animations.shake(text: topLabel, duration: 0.4); return }
 		guard let age = textFieldAge.text else { return }
 		self.childModel.name = textFieldName.text ?? ""
 		self.childModel.age = Int(age) ?? 0
@@ -160,6 +161,7 @@ final class CustomHeader: UIView {
 //MARK: - extension
 extension CustomHeader: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		guard textFieldName.text != "" else { Animations.shake(text: topLabel, duration: 0.4); return false }
 			return textFieldAge.becomeFirstResponder()
 	}
 }

@@ -21,6 +21,7 @@
 		3AFE7F3D2906E84D00B292A7 /* Child+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */; };
 		3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */; };
 		3AFE7F4229071CDB00B292A7 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F4129071CDB00B292A7 /* CustomFooter.swift */; };
+		3AFE7F452907488A00B292A7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE7F442907488A00B292A7 /* Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3AFE7F3B2906E84D00B292A7 /* Child+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AFE7F3F2906EA7F00B292A7 /* CoreDataMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMethods.swift; sourceTree = "<group>"; };
 		3AFE7F4129071CDB00B292A7 /* CustomFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
+		3AFE7F442907488A00B292A7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				3A900C422906948800B88276 /* Assets.xcassets */,
 				3A900C442906948800B88276 /* LaunchScreen.storyboard */,
 				3A900C472906948800B88276 /* Info.plist */,
+				3AFE7F442907488A00B292A7 /* Animation.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				3A900C412906948100B88276 /* Adding_childrens.xcdatamodeld in Sources */,
 				3AFE7F402906EA7F00B292A7 /* CoreDataMethods.swift in Sources */,
 				3A9CA26E2906E28F0073D919 /* Model.swift in Sources */,
+				3AFE7F452907488A00B292A7 /* Animation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

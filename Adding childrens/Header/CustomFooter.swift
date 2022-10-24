@@ -18,7 +18,7 @@ final class CustomFooter: UITableViewHeaderFooterView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	let buttonClear: UIButton = {
+	var buttonClear: UIButton = {
 		let button = UIButton()
 		button.setTitle("Очистить", for: .normal)
 		button.setTitleColor(.red, for: .normal)
@@ -29,11 +29,9 @@ final class CustomFooter: UITableViewHeaderFooterView {
 		return button
 	}()
 	
-	
 	@objc func clearAction() {
 		NotificationCenter.default.post(name: Notification.Name("clearAction"), object: .none)
 	}
-	
 	
 	//MARK: - addSubviewAndConfigure
 	internal func addSubviewAndConfigure() {
