@@ -13,6 +13,17 @@ fileprivate enum Constant{
 	static var tFBorderColor: CGColor { UIColor(named: "BorderColor")?.cgColor ?? UIColor.lightGray.cgColor }
 }
 
+fileprivate enum Title{
+	static var namePlaceholder = "Имя"
+	static var agePlaceholder = "Возраст"
+	static var bottomLabelText = "Дети (макс. 5)"
+	static var topLabelText = "Персональные данные"
+	static var leftNumToolBar = "Отмена"
+	static var rightNumToolBar = "Продолжить"
+	static var addChildBtn = "+ Добавить ребенка"
+}
+
+
 protocol CustomHeaderProtocol {
 	func upDownHeader()
 }
@@ -46,44 +57,44 @@ final class CustomHeader: UIView {
 	}
 
 	private func setupTextFieldName() {
-		self.textFieldName.delegate = self
-		self.textFieldName.backgroundColor = .white
-		self.textFieldName.placeholder = "Имя"
-		self.textFieldName.indent(size: 10)
-		self.textFieldName.layer.borderWidth = 1
-		self.textFieldName.layer.borderColor = Constant.tFBorderColor
-		self.textFieldName.layer.cornerRadius = 8
+		textFieldName.delegate = self
+		textFieldName.backgroundColor = .white
+		textFieldName.placeholder = Title.namePlaceholder
+		textFieldName.indent(size: 10)
+		textFieldName.layer.borderWidth = 1
+		textFieldName.layer.borderColor = Constant.tFBorderColor
+		textFieldName.layer.cornerRadius = 8
 	}
 	
 	private func setupTextFieldToolBar() {
 		numberToolbar.barStyle = .default
 		numberToolbar.items=[
-			UIBarButtonItem(title: "Отмена", style: UIBarButtonItem.Style.plain, target: self, action: #selector(dismissKeyb)),
+			UIBarButtonItem(title: Title.leftNumToolBar, style: UIBarButtonItem.Style.plain, target: self, action: #selector(dismissKeyb)),
 			UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil),
-			UIBarButtonItem(title: "Продолжить", style: UIBarButtonItem.Style.plain, target: self, action: #selector(okAction))
+			UIBarButtonItem(title: Title.rightNumToolBar, style: UIBarButtonItem.Style.plain, target: self, action: #selector(okAction))
 		]
 		numberToolbar.sizeToFit()
 	}
 	
 	private func setupTopLabel() {
-		self.topLabel.text = "Персональные данные"
+		topLabel.text = Title.topLabelText
 	}
 	
 	private func setupBottomLabel() {
-		self.bottomLabel.text = "Дети (макс. 5)"
+		bottomLabel.text = Title.bottomLabelText
 	}
 	
 	private func setupTextFieldAge() {
-		self.textFieldAge.inputAccessoryView = numberToolbar
-		self.textFieldAge.delegate = self
-		self.textFieldAge.backgroundColor = .white
-		self.textFieldAge.placeholder = "Возраст"
-		self.textFieldAge.indent(size: 10)
-		self.textFieldAge.layer.borderWidth = 1
-		self.textFieldAge.keyboardType = .numberPad
-		self.textFieldAge.layer.borderColor = Constant.tFBorderColor
-		self.textFieldAge.layer.cornerRadius = 8
-		self.textFieldAge.isHidden = true
+		textFieldAge.inputAccessoryView = numberToolbar
+		textFieldAge.delegate = self
+		textFieldAge.backgroundColor = .white
+		textFieldAge.placeholder = Title.agePlaceholder
+		textFieldAge.indent(size: 10)
+		textFieldAge.layer.borderWidth = 1
+		textFieldAge.keyboardType = .numberPad
+		textFieldAge.layer.borderColor = Constant.tFBorderColor
+		textFieldAge.layer.cornerRadius = 8
+		textFieldAge.isHidden = true
 	}
 	
 	@objc func dismissKeyb() {
@@ -93,68 +104,71 @@ final class CustomHeader: UIView {
 	@objc func okAction() {
 		guard textFieldAge.text != "" else { Animations.shake(text: topLabel, duration: 0.4); return }
 		guard let age = textFieldAge.text else { return }
-		self.childModel.name = textFieldName.text ?? ""
-		self.childModel.age = Int(age) ?? 0
+		childModel.name = textFieldName.text ?? ""
+		childModel.age = Int(age) ?? 0
 		CoreDataMethods.shared.saveChild(name: childModel.name, age: childModel.age)
 		
-		self.textFieldName.text = ""
-		self.textFieldAge.text = ""
-		self.endEditing(true)
+		textFieldName.text = ""
+		textFieldAge.text = ""
+		endEditing(true)
 	}
 	
 	private func setupAddChildButton() {
-		self.addChildButton.setTitle("+ Добавить ребенка", for: .normal)
-		self.addChildButton.setTitleColor(.blue, for: .normal)
-		self.addChildButton.layer.borderColor = UIColor(ciColor: .blue).cgColor
-		self.addChildButton.layer.borderWidth = 1
-		self.addChildButton.layer.cornerRadius = 22
-		self.addChildButton.addTarget(self, action: #selector(addChildAction), for: .touchUpInside)
+		addChildButton.setTitle(Title.addChildBtn, for: .normal)
+		addChildButton.setTitleColor(.blue, for: .normal)
+		addChildButton.layer.borderColor = UIColor(ciColor: .blue).cgColor
+		addChildButton.layer.borderWidth = 1
+		addChildButton.layer.cornerRadius = 22
+		addChildButton.addTarget(self, action: #selector(addChildAction), for: .touchUpInside)
 	}
 	
 	@objc func addChildAction() {
-		self.delegate?.upDownHeader()
+		delegate?.upDownHeader()
+	}
+}
+
+
+//MARK: - Layout
+extension CustomHeader {
+	
+	private func addSubview() {
+		addSubview(topLabel)
+		addSubview(textFieldName)
+		addSubview(textFieldAge)
+		addSubview(bottomLabel)
+		addSubview(addChildButton)
 	}
 	
-	//MARK: - AddSubViews
-	private func addSubview() {
-			self.addSubview(topLabel)
-			self.addSubview(textFieldName)
-			self.addSubview(textFieldAge)
-			self.addSubview(bottomLabel)
-			self.addSubview(addChildButton)
-		}
-	
-	//MARK: - Layout
 	func layout() {
-		self.topLabel.translatesAutoresizingMaskIntoConstraints = false
-		self.topLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-		self.topLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-		self.topLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-		self.topLabel.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		topLabel.translatesAutoresizingMaskIntoConstraints = false
+		topLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+		topLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+		topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+		topLabel.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.textFieldName.translatesAutoresizingMaskIntoConstraints = false
-		self.textFieldName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-		self.textFieldName.topAnchor.constraint(equalTo: self.topLabel.bottomAnchor).isActive = true
-		self.textFieldName.trailingAnchor.constraint(equalTo: self.topLabel.trailingAnchor).isActive = true
-		self.textFieldName.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		textFieldName.translatesAutoresizingMaskIntoConstraints = false
+		textFieldName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+		textFieldName.topAnchor.constraint(equalTo: topLabel.bottomAnchor).isActive = true
+		textFieldName.trailingAnchor.constraint(equalTo: topLabel.trailingAnchor).isActive = true
+		textFieldName.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.textFieldAge.translatesAutoresizingMaskIntoConstraints = false
-		self.textFieldAge.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-		self.textFieldAge.topAnchor.constraint(equalTo: self.textFieldName.bottomAnchor, constant: 10).isActive = true
-		self.textFieldAge.trailingAnchor.constraint(equalTo: self.topLabel.trailingAnchor).isActive = true
-		self.textFieldAge.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		textFieldAge.translatesAutoresizingMaskIntoConstraints = false
+		textFieldAge.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+		textFieldAge.topAnchor.constraint(equalTo: textFieldName.bottomAnchor, constant: 10).isActive = true
+		textFieldAge.trailingAnchor.constraint(equalTo: topLabel.trailingAnchor).isActive = true
+		textFieldAge.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.bottomLabel.translatesAutoresizingMaskIntoConstraints = false
-		self.bottomLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-		self.bottomLabel.topAnchor.constraint(equalTo: self.textFieldAge.bottomAnchor, constant: 10).isActive = true
-		self.bottomLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -40).isActive = true
-		self.bottomLabel.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		bottomLabel.translatesAutoresizingMaskIntoConstraints = false
+		bottomLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+		bottomLabel.topAnchor.constraint(equalTo: textFieldAge.bottomAnchor, constant: 10).isActive = true
+		bottomLabel.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -40).isActive = true
+		bottomLabel.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.addChildButton.translatesAutoresizingMaskIntoConstraints = false
-		self.addChildButton.leadingAnchor.constraint(equalTo: self.bottomLabel.trailingAnchor, constant: 20).isActive = true
-		self.addChildButton.topAnchor.constraint(equalTo: self.textFieldAge.bottomAnchor, constant: 10).isActive = true
-		self.addChildButton.trailingAnchor.constraint(equalTo: self.topLabel.trailingAnchor).isActive = true
-		self.addChildButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		addChildButton.translatesAutoresizingMaskIntoConstraints = false
+		addChildButton.leadingAnchor.constraint(equalTo: bottomLabel.trailingAnchor, constant: 20).isActive = true
+		addChildButton.topAnchor.constraint(equalTo: textFieldAge.bottomAnchor, constant: 10).isActive = true
+		addChildButton.trailingAnchor.constraint(equalTo: topLabel.trailingAnchor).isActive = true
+		addChildButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
 	}
 }
 
@@ -169,7 +183,7 @@ extension CustomHeader: UITextFieldDelegate {
 //MARK: - extension UITextField
 extension UITextField {
 		func indent(size:CGFloat) {
-				self.leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
-				self.leftViewMode = .always
+				leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
+				leftViewMode = .always
 		}
 }

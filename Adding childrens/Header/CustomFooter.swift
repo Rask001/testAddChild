@@ -15,9 +15,11 @@ final class CustomFooter: UITableViewHeaderFooterView {
 		addSubviewAndConfigure()
 		layout()
 	}
+	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
 	var buttonClear: UIButton = {
 		let button = UIButton()
 		button.setTitle("Очистить", for: .normal)
@@ -41,10 +43,10 @@ final class CustomFooter: UITableViewHeaderFooterView {
 	
 	//MARK: - layout
 	internal func layout() {
-		self.buttonClear.translatesAutoresizingMaskIntoConstraints = false
-		self.buttonClear.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-		self.buttonClear.widthAnchor.constraint(equalToConstant: 150).isActive = true
-		self.buttonClear.heightAnchor.constraint(equalToConstant: 44).isActive = true
-		self.buttonClear.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+		buttonClear.translatesAutoresizingMaskIntoConstraints = false
+		buttonClear.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+		buttonClear.widthAnchor.constraint(equalToConstant: 150).isActive = true
+		buttonClear.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		buttonClear.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 	}
 }

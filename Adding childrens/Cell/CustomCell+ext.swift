@@ -14,6 +14,9 @@ fileprivate enum Constant{
 	static var lblHideColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
 	static var lblAgeFont = UIFont(name: "Helvetica Neue", size: 14)!
 	static var lblAgeDownFont = UIFont(name: "Helvetica Neue", size: 20)!
+	static var delBtnTitle = "Удалить"
+	static var lblAgeFrame = CGRect(x: 12, y: 0, width: 70, height: 16)
+	static var lblAgeDown = CGRect(x: 12, y: 16, width: 200, height: 28)
 }
 
 extension CustomCell {
@@ -21,7 +24,7 @@ extension CustomCell {
 	//MARK: - SETUP
 	internal func makeButton() -> UIButton {
 		let button = UIButton(type: .system)
-		button.setTitle("Удалить", for: .normal)
+		button.setTitle(Constant.delBtnTitle, for: .normal)
 		button.setTitleColor(.red, for: .normal)
 		button.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
 		return button
@@ -33,7 +36,7 @@ extension CustomCell {
 		lblAge.textColor = .lightGray
 		lblAge.text = text
 		lblAge.font = Constant.lblAgeFont
-		lblAge.frame = CGRect(x: 12, y: 0, width: 70, height: 16)
+		lblAge.frame = Constant.lblAgeFrame
 		lbl.layer.borderWidth = 1
 		lbl.layer.cornerRadius = 8
 		lbl.layer.borderColor = Constant.tFBorderColor
@@ -45,7 +48,7 @@ extension CustomCell {
 	internal func makeInsideLblName() -> UILabel {
 		let lblAgeDown = UILabel()
 		lblAgeDown.font = Constant.lblAgeDownFont
-		lblAgeDown.frame = CGRect(x: 12, y: 16, width: 200, height: 28)
+		lblAgeDown.frame = Constant.lblAgeDown
 		return lblAgeDown
 	}
 	
@@ -57,28 +60,28 @@ extension CustomCell {
 	
 	//MARK: - addSubviewAndConfigure
 	internal func addSubviewAndConfigure() {
-		self.contentView.addSubview(self.button)
-		self.contentView.addSubview(self.labelName)
-		self.contentView.addSubview(self.labelAge)
+		contentView.addSubview(button)
+		contentView.addSubview(labelName)
+		contentView.addSubview(labelAge)
 	}
 	
 	//MARK: - layout
 	internal func layout() {
-		self.labelName.translatesAutoresizingMaskIntoConstraints = false
-	  self.labelName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-	  self.labelName.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-		self.labelName.widthAnchor.constraint(equalToConstant: self.frame.size.width/2 + 20).isActive = true
-		self.labelName.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		labelName.translatesAutoresizingMaskIntoConstraints = false
+	  labelName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+	  labelName.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+		labelName.widthAnchor.constraint(equalToConstant: frame.size.width/2 + 20).isActive = true
+		labelName.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.labelAge.translatesAutoresizingMaskIntoConstraints = false
-		self.labelAge.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-		self.labelAge.topAnchor.constraint(equalTo: self.labelName.bottomAnchor, constant: 20).isActive = true
-		self.labelAge.widthAnchor.constraint(equalToConstant: self.frame.size.width/2 + 20).isActive = true
-		self.labelAge.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		labelAge.translatesAutoresizingMaskIntoConstraints = false
+		labelAge.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+		labelAge.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 20).isActive = true
+		labelAge.widthAnchor.constraint(equalToConstant: frame.size.width/2 + 20).isActive = true
+		labelAge.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
-		self.button.translatesAutoresizingMaskIntoConstraints = false
-		self.button.leadingAnchor.constraint(equalTo: self.labelName.trailingAnchor, constant: 20).isActive = true
-		self.button.centerYAnchor.constraint(equalTo: self.labelName.centerYAnchor).isActive = true
-		self.button.widthAnchor.constraint(equalToConstant: 80).isActive = true
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.leadingAnchor.constraint(equalTo: labelName.trailingAnchor, constant: 20).isActive = true
+		button.centerYAnchor.constraint(equalTo: labelName.centerYAnchor).isActive = true
+		button.widthAnchor.constraint(equalToConstant: 80).isActive = true
 	}
 }

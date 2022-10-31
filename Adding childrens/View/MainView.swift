@@ -16,6 +16,7 @@ class MainView: UIViewController {
 	private var footerView = CustomFooter()
 	var headerViewTopConstraint: NSLayoutConstraint?
 	
+	
 	//MARK: - LIVECYCLE
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,10 +31,10 @@ class MainView: UIViewController {
 		super.viewWillAppear(false)
 		CoreDataMethods.shared.fetchRequest()
 		if CoreDataMethods.shared.coreDataModel.count > 4 {
-			self.headerViewTopConstraint?.constant = -186
-			self.headerView.addChildButton.isHidden = true
-			self.headerView.bottomLabel.isHidden = true
-			self.headerView.textFieldAge.isHidden = false
+			headerViewTopConstraint?.constant = -186
+			headerView.addChildButton.isHidden = true
+			headerView.bottomLabel.isHidden = true
+			headerView.textFieldAge.isHidden = false
 		}
 	}
 	
@@ -57,7 +58,7 @@ class MainView: UIViewController {
 	//MARK: - ACTION
 	@objc func tableViewReloadData() {
 		CoreDataMethods.shared.fetchRequest()
-		self.tableView.reloadData()
+		tableView.reloadData()
 		showHideHeader()
 	}
 	
@@ -74,7 +75,7 @@ class MainView: UIViewController {
 	
 	func showHideHeader() {
 		UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0) { [weak self] in
-			guard let self else { return }
+			guard let self = self else { return }
 			if CoreDataMethods.shared.coreDataModel.count > 4 {
 				self.headerViewTopConstraint?.constant = -186
 				self.headerView.addChildButton.isHidden = true
@@ -92,25 +93,25 @@ class MainView: UIViewController {
 	
 	//MARK: - LAYOUT
 	private func addSubview() {
-		self.view.backgroundColor = .white
-		self.view.addSubview(headerView)
-		self.view.addSubview(tableView)
+		view.backgroundColor = .white
+		view.addSubview(headerView)
+		view.addSubview(tableView)
 	}
 	
 	private func layout() {
-		self.headerView.translatesAutoresizingMaskIntoConstraints = false
-		self.headerViewTopConstraint = self.headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -142)
-		self.headerViewTopConstraint?.isActive = true
-		self.headerView.bottomAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-		self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-		self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-		self.headerView.heightAnchor.constraint(equalToConstant: 206).isActive = true
+		headerView.translatesAutoresizingMaskIntoConstraints = false
+		headerViewTopConstraint = self.headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -142)
+		headerViewTopConstraint?.isActive = true
+		headerView.bottomAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+		headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+		headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+		headerView.heightAnchor.constraint(equalToConstant: 206).isActive = true
 		
-		self.tableView.translatesAutoresizingMaskIntoConstraints = false
-		self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor).isActive = true
-		self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-		self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-		self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor).isActive = true
+		tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+		tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+		tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
 	}
 }
 
@@ -145,7 +146,7 @@ extension MainView: UITableViewDelegate, UITableViewDataSource {
 	func upDownHeader() {
 		print(#function)
 		UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0) { [weak self] in
-			guard let self else { return }
+			guard let self = self else { return }
 			self.headerViewTopConstraint?.constant = 0
 			self.headerView.textFieldAge.isHidden = false
 			self.headerView.textFieldName.becomeFirstResponder()
